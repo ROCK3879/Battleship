@@ -5,7 +5,7 @@ Users can try to beat the computer by finding all of the computer's battleships 
 Each battleship occupa one square on the board.
 
 * Live link: 
-[Here is the live version of my project.](https://------------------------.heroku)
+[Here is the live version of my project.](https://battleship-prela-805a22d0542f.herokuapp.com/)
 
 
 ![Screen responsiveness](/media/responsive.png)
