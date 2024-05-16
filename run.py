@@ -95,6 +95,14 @@ def play_game(computer_board, player_board):
             scores["computer"] += 1
             break
 
+def get_player_name() :
+   while True:
+     player_name = input("Please enter your name: \n").strip()
+     if len(player_name) > 1 and len(player_name) < 15:
+            return player_name
+     else:
+        print("Player name should be within 15 characters")  
+
 def new_game():
     # Start a new game
     size = 5
@@ -109,8 +117,7 @@ def new_game():
     print(" Top left corner is row: 0, col: 0")
     print("-" * 35)
 
-    player_name = input("Please enter your name: \n")
-    print("-" * 35)
+    player_name = get_player_name()
 
     computer_board = Board(size, num_ships, "Computer", type="computer")
     player_board = Board(size, num_ships, player_name, type="player")
