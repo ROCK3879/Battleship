@@ -67,7 +67,7 @@ def make_guess(board):
         make_guess(board)
 
 def play_game(computer_board, player_board):
-    # Play the game
+    """ Play the game """
     while True:
         print("Computer's Board:")
         computer_board.print()
@@ -128,4 +128,6 @@ def new_game():
 
     play_game(computer_board, player_board)
 
-new_game()
+if __name__ == '__main__':
+
+    new_game()
