@@ -20,6 +20,40 @@ Guesses are marked on the board with an X. Hits are indicated by *
 The player and the computer then take it in turns to make guesses and try to sink each other's battleships.
 The winner is the player who sinks all of their opponent's battleships first.
 
+## User Stories
+
+###  User Story 1: Player Registration
+ - As a player, I want to enter my name at the start of the game, so that I can personalize my gaming experience.
+
+### User Story 2: Player's Board Visibility
+ - As a player, I want to see the locations of my own battleships indicated by the @ sign on my board, so that I know where my ships are placed.
+
+### User Story 3: Hidden Computer's Board
+ - As a player, I want to be unable to see the locations of the computer’s battleships, so that the game maintains a level of challenge and surprise.
+
+### User Story 4: Guessing Mechanism
+ - As a player, I want to be able to make guesses about the locations of the computer’s battleships, so that I can try to sink them by marking hits and misses.
+
+### User Story 5: Hit and Miss Indicators
+ - As a player, I want to see an X on the board where a guess is made and a * where a hit is made, so that I can track my progress and strategy.
+
+### User Story 6: Winning Condition
+ - As a player, I want to win the game by sinking all of the computer's battleships, so that I can achieve victory.
+
+### User Story 7: Computer's Turn Logic
+ - As a player, I want the computer to make intelligent guesses to try and find my battleships, so that the game is challenging and engaging.
+
+### User Story 8: Game Instructions
+ - As a new player, I want to read clear instructions on how to play the game, so that I can understand the rules and mechanics before starting.
+
+### User Story 9: Game Feedback
+ - As a player, I want to receive feedback after each guess (hit, miss, or invalid guess), so that I know the result of my actions immediately.
+
+### User Story 10: Game Restart
+ - As a player, I want to have the option to restart the game after it ends, so that I can play again without having to reload the program.
+
+These user stories should give a comprehensive overview of the player's experience and expectations when playing Ultimate Battleships-Prela.
+
 ## Flowchart
 
 ![Flowchart](/media/flowchart.png)
@@ -79,6 +113,20 @@ Passed the code through a PEP8 linter and confirmed there are no problems.
 
   -  Given invalid inputs: strings when numbers are expected and out of bounds inputs.
   -  Tested in my local terminal and Heroku terminal.
+
+### Test Case 1: Invalid Row and Column Input
+ - Test Name: Test Invalid Row Input
+ - Description: Verify that the game correctly handles an invalid row input by the player.
+ - Steps: Start the game and enter a valid player name. At the prompt to enter a guess, input a coordinate with an invalid row or column.
+
+ ![Enter](/media/test_cases_1_invalid_row_invalid_column.png)
+
+### Test Case 2: Valid Row and Column Input
+ - Test Name: Test Valid Row and Column Input
+ - Description: Verify that the game correctly processes a valid row and column input by the player.
+ - Steps: Start the game and enter a valid player name. At the prompt to enter a guess, input a coordinate with a valid row and column
+
+ ![Enter](/media/test_cases_2_valid_row_valid_column.png)
 
 ## Bugs
 
