@@ -1,168 +1,139 @@
-## Battleships-Prela
+# Ultimate Battleships-Prela
 
-Ultimate Battleships-Prela is a Python terminal game, which runs on Heroku.
-Users can try to beat the computer by finding all of the computer's battleships before the computer finds theirs. 
-Each battleship occupa one square on the board.
+Ultimate Battleships-Prela is a Python terminal game that users can play on Heroku. The objective is to beat the computer by locating and sinking all of the computer's battleships before it sinks yours. Each battleship occupies one square on the board.
 
-* Live link: 
-[Here is the live version of my project.](https://battleship-prela-805a22d0542f.herokuapp.com/)
+- **Live Link**: [Play Ultimate Battleships-Prela](https://battleship-prela-805a22d0542f.herokuapp.com/)
 
+![Screen responsiveness](media/responsive.png)
 
-![Screen responsiveness](/media/responsive.png)
+## How to Play
 
-
-## How to play
-
-Ultimate Battleships is based on the classic pen-and-paper game. You can read more about it on [Wikipedia.](https://en.wikipedia.org/wiki/Battleship_(game)).
-In this version, the player enters their name and two boards are randomly generated.
-The player can see where their ships are, indicated by an @ sign, but cannot see where the computer's ships are.
-Guesses are marked on the board with an X. Hits are indicated by *
-The player and the computer then take it in turns to make guesses and try to sink each other's battleships.
-The winner is the player who sinks all of their opponent's battleships first.
+Ultimate Battleships-Prela is based on the classic pen-and-paper game Battleship. You can learn more about the original game on [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)). In this version, players enter their names and two boards are randomly generated. The player can see their own ships (indicated by @) but not the computer's ships. Guesses are marked on the board with X for misses and * for hits. Players and the computer take turns guessing locations, with the goal being to sink all of the opponent's battleships first.
 
 ## User Stories
 
-###  User Story 1: Player Registration
- - As a player, I want to enter my name at the start of the game, so that I can personalize my gaming experience.
+### User Story 1: Player Registration
+- **As a player**, I want to enter my name at the start of the game to personalize my gaming experience.
 
 ### User Story 2: Player's Board Visibility
- - As a player, I want to see the locations of my own battleships indicated by the @ sign on my board, so that I know where my ships are placed.
+- **As a player**, I want to see the locations of my battleships (indicated by @) so that I know where they are placed.
 
 ### User Story 3: Hidden Computer's Board
- - As a player, I want to be unable to see the locations of the computer’s battleships, so that the game maintains a level of challenge and surprise.
+- **As a player**, I want the computer's battleships to be hidden to maintain a level of challenge and surprise.
 
 ### User Story 4: Guessing Mechanism
- - As a player, I want to be able to make guesses about the locations of the computer’s battleships, so that I can try to sink them by marking hits and misses.
+- **As a player**, I want to make guesses about the locations of the computer’s battleships to try and sink them.
 
 ### User Story 5: Hit and Miss Indicators
- - As a player, I want to see an X on the board where a guess is made and a * where a hit is made, so that I can track my progress and strategy.
+- **As a player**, I want to see an X for a miss and a * for a hit on the board to track my progress.
 
 ### User Story 6: Winning Condition
- - As a player, I want to win the game by sinking all of the computer's battleships, so that I can achieve victory.
+- **As a player**, I want to win by sinking all of the computer's battleships.
 
 ### User Story 7: Computer's Turn Logic
- - As a player, I want the computer to make intelligent guesses to try and find my battleships, so that the game is challenging and engaging.
+- **As a player**, I want the computer to make intelligent guesses to find my battleships, making the game challenging.
 
 ### User Story 8: Game Instructions
- - As a new player, I want to read clear instructions on how to play the game, so that I can understand the rules and mechanics before starting.
+- **As a new player**, I want clear instructions on how to play the game.
 
 ### User Story 9: Game Feedback
- - As a player, I want to receive feedback after each guess (hit, miss, or invalid guess), so that I know the result of my actions immediately.
+- **As a player**, I want immediate feedback after each guess (hit, miss, or invalid).
 
 ### User Story 10: Game Restart
- - As a player, I want to have the option to restart the game after it ends, so that I can play again without having to reload the program.
-
-These user stories should give a comprehensive overview of the player's experience and expectations when playing Ultimate Battleships-Prela.
+- **As a player**, I want the option to restart the game after it ends.
 
 ## Flowchart
 
-![Flowchart](/media/flowchart.png)
+![Flowchart](media/flowchart.png)
 
 ## Features
+
 ### Existing Features
+- **Random Board Generation**: Ships are randomly placed on both the player's and computer's boards.
 
-  -  Random board generation.
-  -  Ships are randomly placed on both the player and computer boards.
-  -  The player cannot see where the computer's ships are.
+  ![Welcome](media/welcome_game_msg.png)
 
-![Welcome](/media/welcome_game_msg.png)
+- **Play Against the Computer**: Players compete against a computer opponent.
+- **User Input**: Accepts player input for names and guesses.
 
-  -  Play against the computer.
-  -  Accepts user input.
-  -  Maintains scores.
+  ![Enter-Start](media/enter_name_start_game.png)
 
-![Enter-Start](/media/enter_name_start_game.png)
+- **Input Validation and Error-Checking**: Ensures inputs are within the grid, are numbers, and not repeated guesses.
 
-  -  Input validation and error-checking
-  -  You cannot enter coordinates outside the size of the grid.
-  -  You must enter numbers.
-  -  You cannot enter the same guess twice.
- 
-![Error](/media/error-invalid-coordinates.png)
+  ![Error](media/error-invalid-coordinates.png)
+  ![Enter](media/enter_row_enter_column.png)
 
-![Enter](/media/enter_row_enter_column.png)
+- **Class Instances for Data Management**: The game uses class instances to manage data such as board states and player information.
 
-  -  Data maintained in class instances
-
-## Future Features
-
-  -  Allow player to select the board size and number of ships.
-  -  Allow player to position ships themselves.
-  -  Have ships larger than 1x1.
+### Future Features
+- **Customizable Board Size and Ship Number**: Allow players to choose board size and number of ships.
+- **Manual Ship Placement**: Allow players to position their ships.
+- **Larger Ships**: Introduce ships larger than 1x1.
 
 ## Data Model
 
-I decided to use a Board class as my model. The game creates two instances of the Board class to hold the player's and the computer's
-board.
-The Board class stores the board size, the number of ships, the position of the ships, the guesses against that board, and details such as the board type 
-(player's board or computer) and the player's name.
-The class also has methods to help play the game, such as a print method to print out the current board, an add_ships method to add ships to the board and 
-an add_guess method to add a guess and return the result.
+The game uses a `Board` class model. Two instances of the `Board` class are created to hold the player's and the computer's boards. The `Board` class stores board size, number of ships, ship positions, guesses, board type, and player names. Methods include printing the board, adding ships, and processing guesses.
 
 ## Technology Used
-  -  Python 
-  -  GitHub 
-  -  Gitpod
-  -  Heroku
+- **Python**
+- **GitHub**
+- **Gitpod**
+- **Heroku**
 
 ## Testing
 
-I have manually tested this project by doing the following:
+### Manual Testing
+- **PEP8 Compliance**: Code passed through PEP8 linter with no issues.
+- **Invalid Inputs**: Tested with strings, out-of-bounds inputs, and repeated guesses.
+- **Local and Heroku Testing**: Ensured functionality in both environments.
 
-Passed the code through a PEP8 linter and confirmed there are no problems.
+### Test Cases
 
-  -  Given invalid inputs: strings when numbers are expected and out of bounds inputs.
-  -  Tested in my local terminal and Heroku terminal.
+#### Test Case 1: Invalid Row and Column Input
+- **Test Name**: Test Invalid Row Input
+- **Description**: Verify handling of invalid row input.
+- **Steps**: Start the game, enter a valid name, and input invalid coordinates.
 
-### Test Case 1: Invalid Row and Column Input
- - Test Name: Test Invalid Row Input
- - Description: Verify that the game correctly handles an invalid row input by the player.
- - Steps: Start the game and enter a valid player name. At the prompt to enter a guess, input a coordinate with an invalid row or column.
+  ![Enter](media/test_cases_1_invalid_row_invalid_column.png)
 
- ![Enter](/media/test_cases_1_invalid_row_invalid_column.png)
+#### Test Case 2: Valid Row and Column Input
+- **Test Name**: Test Valid Row and Column Input
+- **Description**: Verify processing of valid row and column input.
+- **Steps**: Start the game, enter a valid name, and input valid coordinates.
 
-### Test Case 2: Valid Row and Column Input
- - Test Name: Test Valid Row and Column Input
- - Description: Verify that the game correctly processes a valid row and column input by the player.
- - Steps: Start the game and enter a valid player name. At the prompt to enter a guess, input a coordinate with a valid row and column
-
- ![Enter](/media/test_cases_2_valid_row_valid_column.png)
+  ![Enter](media/test_cases_2_valid_row_valid_column.png)
 
 ## Bugs
 
 ### Solved Bugs
-
-  -  My validate_coordinates function was returning false positives because I hadn't structured the if statement properly.
+- **False Positives in Validation**: Resolved an issue with the `validate_coordinates` function's if statement structure.
 
 ### Remaining Bugs
-
-  -  No bugs remaining.
+- **None**: All known bugs have been resolved.
 
 ### Validator Testing
+- **PEP8**: No errors returned from the [PEP8 CI](https://pep8ci.herokuapp.com/#).
 
-  -  PEP8.
-
-  -  No errors were returned from[PEP8](https://pep8ci.herokuapp.com/#)
-
-![Error check](/media/ci_python_linter_error_check.png)
+  ![Error check](media/ci_python_linter_error_check.png)
 
 ## Deployment
 
-This project was deployed using Heroku.
+The project was deployed using Heroku.
 
--  Steps for deployment:
+### Steps for Deployment
+1. Fork or clone the repository.
+2. Create a new Heroku app.
+3. Set buildpacks to Python and NodeJS in that order.
+4. Link the Heroku app to the repository.
+5. Click Deploy.
 
-   -  Fork or clone this repository.
-   -  Create a new Heroku app.
-   -  Set the buildbacks to Python and NodeJS in that order.
-   -  Link the Heroku app to the repository.
-   -  Click on Deploy.
+### Forking the Repository
+1. Log into GitHub and locate the repository: [https://github.com/ROCK3879/Battleship.git](https://github.com/ROCK3879/Battleship.git)
+2. Click the 'Fork' button at the top of the repository to create a copy.
 
-## Forking the repository
-In order to fork the repository to make a copy the steps are:
+### Accreditation
+Special thanks to the [PEP8 CI tool](https://pep8ci.herokuapp.com/#) for validating the code.
 
-1. Log into GitHub and locate the repository for https://github.com/ROCK3879/Battleship.git
-2. At the top of the repository above settings locate the 'Fork' button There is now a copy of the repository in the Github account.
+---
 
------
-Happy coding!
+Happy coding! 
