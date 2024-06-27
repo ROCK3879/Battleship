@@ -2,46 +2,56 @@ from random import randint
 
 scores = {"computer": 0, "player": 0}
 
+
 class Board:
-    # Main board class. Sets board size, the number of ships, the player's name and the board type (player board or computer) 
+    # Main board class.
+    # Sets board size, the number of ships, the player's name,
+    # and the board type (player board or computer).
     # Has methods for adding ships and guesses and printing the board
-    def __init__(self, size, num_ships, name, type):
+
+    def __init__(self, size, num_ships, name, board_type):
         self.size = size
-        self.board = [["." for x in range(size)] for y in range(size)]
+        self.board = [["." for _ in range(size)] for _ in range(size)]
         self.num_ships = num_ships
         self.name = name
-        self.type = type
+        self.board_type = board_type
         self.guesses = []
         self.ships = []
 
-    def print(self): 
-        for row in self.board: 
+    def print_board(self):
+        for row in self.board:
             print(" ".join(row))
 
-    def guess(self, x, y): 
-        self.guesses.append((x, y)) 
-        if (x, y) in self.ships: 
-            self.board[x][y] = "*" 
+    def guess(self, x, y):
+        if (x, y) in self.guesses:
+            print("You already guessed this position.")
+            return "Duplicate"
+        self.guesses.append((x, y))
+        if (x, y) in self.ships:
+            self.board[x][y] = "*"
             return "Hit"
         else:
             self.board[x][y] = "x"
             return "Miss"
 
-    def add_ship(self, x, y, type="computer"):
+    def add_ship(self, x, y):
         if len(self.ships) >= self.num_ships:
             print("Error: you cannot add any more ships!")
         else:
-            self.ships.append((x, y)) 
-            if self.type == "player": 
+            self.ships.append((x, y))
+            if self.board_type == "player":
                 self.board[x][y] = "@"
 
+
 def random_point(size):
-    # Helper function to return a random integer between 0 and size
+    # Helper function that generates a random integer from 0 to size
     return randint(0, size - 1)
+
 
 def valid_coordinates(x, y, board):
     # Check if coordinates are within the board size
     return 0 <= x < board.size and 0 <= y < board.size
+
 
 def populate_board(board):
     # Add ships randomly to the board
@@ -51,6 +61,7 @@ def populate_board(board):
         if valid_coordinates(x, y, board) and (x, y) not in board.ships:
             board.add_ship(x, y)
 
+
 def make_guess(board):
     # Take a guess from the user
     try:
@@ -59,6 +70,9 @@ def make_guess(board):
         if not valid_coordinates(x, y, board):
             print("Invalid coordinates! Try again.")
             make_guess(board)
+        elif (x, y) in board.guesses:
+            print("You already guessed this position. Try again.")
+            make_guess(board)
         else:
             result = board.guess(x, y)
             print("Result:", result)
@@ -66,42 +80,50 @@ def make_guess(board):
         print("Invalid input! Try again.")
         make_guess(board)
 
+
 def play_game(computer_board, player_board):
     """ Play the game """
     while True:
         print("Computer's Board:")
-        computer_board.print()
+        computer_board.print_board()
         print("\nYour Board:")
-        player_board.print()
+        player_board.print_board()
         print("\n")
-        
+
         print("Your Turn:")
         make_guess(computer_board)
         print("\n")
-        
+
         print("Computer's Turn:")
         computer_guess_x = random_point(player_board.size)
         computer_guess_y = random_point(player_board.size)
         result = player_board.guess(computer_guess_x, computer_guess_y)
-        print(f"Computer guessed ({computer_guess_x}, {computer_guess_y}) - Result: {result}")
+        print(f"Computer guessed ({computer_guess_x}, {computer_guess_y}) "
+              f"- Result: {result}")
         print("\n")
 
-        if all((x, y) in player_board.guesses for x in range(player_board.size) for y in range(player_board.size)):
+        if all((x, y) in player_board.guesses
+               for x in range(player_board.size)
+               for y in range(player_board.size)):
             print("Congratulations! You've won!")
             scores["player"] += 1
             break
-        elif all((x, y) in computer_board.guesses for x in range(computer_board.size) for y in range(computer_board.size)):
+        elif all((x, y) in computer_board.guesses
+                 for x in range(computer_board.size)
+                 for y in range(computer_board.size)):
             print("Computer wins!")
             scores["computer"] += 1
             break
 
-def get_player_name() :
-   while True:
-     player_name = input("Please enter your name: \n").strip()
-     if len(player_name) > 1 and len(player_name) < 15:
+
+def get_player_name():
+    while True:
+        player_name = input("Please enter your name: \n").strip()
+        if 1 < len(player_name) < 15:
             return player_name
-     else:
-        print("Player name should be within 15 characters")  
+        else:
+            print("Player name should be within 15 characters")
+
 
 def new_game():
     # Start a new game
@@ -119,8 +141,8 @@ def new_game():
 
     player_name = get_player_name()
 
-    computer_board = Board(size, num_ships, "Computer", type="computer")
-    player_board = Board(size, num_ships, player_name, type="player")
+    computer_board = Board(size, num_ships, "Computer", board_type="computer")
+    player_board = Board(size, num_ships, player_name, board_type="player")
 
     for _ in range(num_ships):
         populate_board(player_board)
@@ -128,6 +150,6 @@ def new_game():
 
     play_game(computer_board, player_board)
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     new_game()
