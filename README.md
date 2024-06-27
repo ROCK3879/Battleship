@@ -61,6 +61,9 @@ Ultimate Battleships-Prela is based on the classic pen-and-paper game Battleship
 - **Input Validation and Error-Checking**: Ensures inputs are within the grid, are numbers, and not repeated guesses.
 
   ![Error](media/error-invalid-coordinates.png)
+
+  ![Error](media/you_already_guessed_this_position_try_again.png)
+  
   ![Enter](media/enter_row_enter_column.png)
 
 - **Class Instances for Data Management**: The game uses class instances to manage data such as board states and player information.
