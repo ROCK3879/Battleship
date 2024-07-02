@@ -137,6 +137,13 @@ The project was deployed using Heroku.
 ### Accreditation
 Special thanks to the [PEP8 CI tool](https://pep8ci.herokuapp.com/#) for validating the code.
 
+Additional thanks to:
+- The [Battleship Wikipedia page](https://en.wikipedia.org/wiki/Battleship_(game)) for game rules and inspiration.
+- The Python community and documentation for guidance and support.
+- [GitHub](https://github.com/) for hosting the project repository.
+- [Heroku](https://www.heroku.com/) for providing a platform to deploy the game.
+
+
 ---
 
 Happy coding! 
